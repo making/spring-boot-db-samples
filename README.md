@@ -8,6 +8,7 @@
 * [MyBatis](demo-mybatis)
 * [Doma2](demo-doma2)
 * [JDBI](demo-jdbi)
+* [S2JDBC](demo-s2jdbc)
 
 ### Points to implement
 
