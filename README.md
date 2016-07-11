@@ -7,6 +7,7 @@
 * [jOOQ](demo-jooq)
 * [MyBatis](demo-mybatis)
 * [Doma2](demo-doma2)
+* [JDBI](demo-jdbi)
 
 ### Points to implement
 
