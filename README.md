@@ -12,6 +12,8 @@
 * Exposed
 * [S2JDBC](demo-s2jdbc)
 
+Pull Requests Welcome :)
+
 ### Points to implement
 
 * many to one
