@@ -52,7 +52,7 @@ public class PizzaRepository {
         dto.setPrice(pizza.getPrice());
         dto.setBaseId(pizza.getBase().getId());
         pizzaMapper.insert(dto);
-        // TODO batch insert
+        pizzaMapper.flush(); // generate key here in BATCH mode
         pizza.getToppings().forEach(t -> pizzaMapper.insertToppings(new PizzaToppings(dto.getId(), t.getId())));
         return pizza;
     }
