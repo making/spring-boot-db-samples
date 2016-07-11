@@ -22,7 +22,7 @@ public class PizzaRepository {
     }
 
     public List<Pizza> findOrderByIdAsc() {
-        return jdbcTemplate.query("SELECT p.id, p.name, p.price, b.id AS b_id, b.name AS b_name, t.id AS t_id, t.name AS t_name FROM pizza p INNER JOIN base b ON (b.id = p.base_id) INNER JOIN pizza_toppings pt ON (pt.pizza_id = p.id) INNER JOIN topping t ON (t.id = pt.toppings_id) ORDER BY p.id ASC", rs -> {
+        return jdbcTemplate.query("SELECT p.id, p.name, p.price, b.id AS baseId, b.name AS baseName, t.id AS toppingId, t.name AS toppingName FROM pizza p INNER JOIN base b ON (b.id = p.base_id) INNER JOIN pizza_toppings pt ON (pt.pizza_id = p.id) INNER JOIN topping t ON (t.id = pt.toppings_id) ORDER BY p.id ASC", rs -> {
             List<Pizza> pizzas = new ArrayList<>();
             Pizza pizza = null;
             while (rs.next()) {
@@ -32,14 +32,14 @@ public class PizzaRepository {
                     pizza.setId(pizzaId);
                     pizza.setName(rs.getNString("name"));
                     pizza.setPrice(rs.getBigDecimal("price"));
-                    Base base = new Base(rs.getLong("b_id"));
+                    Base base = new Base(rs.getLong("baseId"));
                     pizza.setBase(base);
-                    base.setName(rs.getString("b_name"));
+                    base.setName(rs.getString("baseName"));
                     pizza.setToppings(new ArrayList<>());
                     pizzas.add(pizza);
                 }
-                Topping topping = new Topping(rs.getLong("t_id"));
-                topping.setName(rs.getString("t_name"));
+                Topping topping = new Topping(rs.getLong("toppingId"));
+                topping.setName(rs.getString("toppingName"));
                 pizza.getToppings().add(topping);
             }
             return pizzas;
