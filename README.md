@@ -8,7 +8,7 @@
 * [MyBatis](demo-mybatis)
 * [Doma2](demo-doma2)
 * [JDBI](demo-jdbi)
-* sql2o
+* [Sql2o](demo-sql2o)
 * Exposed
 * [S2JDBC](demo-s2jdbc)
 
