@@ -75,7 +75,7 @@ public abstract class BsPizza extends AbstractEntity implements DomainEntity {
     /** PRICE: {DECIMAL(19, 2)} */
     protected java.math.BigDecimal _price;
 
-    /** BASE_ID: {IX, BIGINT(19), FK to BASE} */
+    /** BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE} */
     protected Long _baseId;
 
     // ===================================================================================
@@ -276,8 +276,8 @@ public abstract class BsPizza extends AbstractEntity implements DomainEntity {
     }
 
     /**
-     * [get] BASE_ID: {IX, BIGINT(19), FK to BASE} <br>
-     * @return The value of the column 'BASE_ID'. (NullAllowed even if selected: for no constraint)
+     * [get] BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE} <br>
+     * @return The value of the column 'BASE_ID'. (basically NotNull if selected: for the constraint)
      */
     public Long getBaseId() {
         checkSpecifiedProperty("baseId");
@@ -285,8 +285,8 @@ public abstract class BsPizza extends AbstractEntity implements DomainEntity {
     }
 
     /**
-     * [set] BASE_ID: {IX, BIGINT(19), FK to BASE} <br>
-     * @param baseId The value of the column 'BASE_ID'. (NullAllowed: null update allowed for no constraint)
+     * [set] BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE} <br>
+     * @param baseId The value of the column 'BASE_ID'. (basically NotNull if update: for the constraint)
      */
     public void setBaseId(Long baseId) {
         registerModifiedProperty("baseId");

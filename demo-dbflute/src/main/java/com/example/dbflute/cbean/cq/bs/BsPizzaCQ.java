@@ -155,14 +155,14 @@ public class BsPizzaCQ extends AbstractBsPizzaCQ {
 
     /** 
      * Add order-by as ascend. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @return this. (NotNull)
      */
     public BsPizzaCQ addOrderBy_BaseId_Asc() { regOBA("BASE_ID"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @return this. (NotNull)
      */
     public BsPizzaCQ addOrderBy_BaseId_Desc() { regOBD("BASE_ID"); return this; }

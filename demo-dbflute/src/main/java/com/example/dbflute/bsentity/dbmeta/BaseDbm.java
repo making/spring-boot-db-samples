@@ -64,7 +64,7 @@ public class BaseDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnId = cci("ID", "ID", null, null, Long.class, "id", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_E93BC9F2_5D00_4D1E_A8E9_77E7AF5C3055", false, null, null, null, "pizzaList", null, false);
+    protected final ColumnInfo _columnId = cci("ID", "ID", null, null, Long.class, "id", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_475664DD_1568_4EBA_A702_F53D2464B8B8", false, null, null, null, "pizzaList", null, false);
     protected final ColumnInfo _columnName = cci("NAME", "NAME", null, null, String.class, "name", null, false, false, false, "VARCHAR", 255, 0, null, false, null, null, null, null, null, false);
 
     /**

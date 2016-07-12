@@ -35,7 +35,7 @@ public class PizzaRepository {
             modelPizza.setId(pizza.getId());
             modelPizza.setName(pizza.getName());
             modelPizza.setPrice(pizza.getPrice());
-            pizza.getBase().ifPresent(base -> { // because BASE_ID is null-able
+            pizza.getBase().alwaysPresent(base -> { // BASE_ID is not-null
                 com.example.model.Base modelBase = new com.example.model.Base(base.getId());
                 modelBase.setName(base.getName());
                 modelPizza.setBase(modelBase);

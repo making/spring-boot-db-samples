@@ -316,7 +316,7 @@ public class BsPizzaCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnPrice() { return doColumn("PRICE"); }
         /**
-         * BASE_ID: {IX, BIGINT(19), FK to BASE}
+         * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnBaseId() { return doColumn("BASE_ID"); }

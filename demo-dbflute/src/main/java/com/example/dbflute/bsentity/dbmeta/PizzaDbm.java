@@ -79,10 +79,10 @@ public class PizzaDbm extends AbstractDBMeta {
     // ===================================================================================
     //                                                                         Column Info
     //                                                                         ===========
-    protected final ColumnInfo _columnId = cci("ID", "ID", null, null, Long.class, "id", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_3A897133_E9CA_4382_B916_AF287A1DCD92", false, null, null, null, "pizzaToppingsList", null, false);
+    protected final ColumnInfo _columnId = cci("ID", "ID", null, null, Long.class, "id", null, true, true, true, "BIGINT", 19, 0, "NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_D4B9D890_E68B_4359_BAC4_49DF061BD1B1", false, null, null, null, "pizzaToppingsList", null, false);
     protected final ColumnInfo _columnName = cci("NAME", "NAME", null, null, String.class, "name", null, false, false, false, "VARCHAR", 255, 0, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnPrice = cci("PRICE", "PRICE", null, null, java.math.BigDecimal.class, "price", null, false, false, false, "DECIMAL", 19, 2, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnBaseId = cci("BASE_ID", "BASE_ID", null, null, Long.class, "baseId", null, false, false, false, "BIGINT", 19, 0, null, false, null, null, "base", null, null, false);
+    protected final ColumnInfo _columnBaseId = cci("BASE_ID", "BASE_ID", null, null, Long.class, "baseId", null, false, false, true, "BIGINT", 19, 0, null, false, null, null, "base", null, null, false);
 
     /**
      * ID: {PK, ID, NotNull, BIGINT(19)}
@@ -100,7 +100,7 @@ public class PizzaDbm extends AbstractDBMeta {
      */
     public ColumnInfo columnPrice() { return _columnPrice; }
     /**
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnBaseId() { return _columnBaseId; }

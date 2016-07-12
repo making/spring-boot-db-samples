@@ -529,7 +529,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseId The value of baseId as equal. (basically NotNull: error as default, or no condition as option)
      */
     public void setBaseId_Equal(Long baseId) {
@@ -542,7 +542,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * NotEqual(&lt;&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseId The value of baseId as notEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setBaseId_NotEqual(Long baseId) {
@@ -555,7 +555,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseId The value of baseId as greaterThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setBaseId_GreaterThan(Long baseId) {
@@ -564,7 +564,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseId The value of baseId as lessThan. (basically NotNull: error as default, or no condition as option)
      */
     public void setBaseId_LessThan(Long baseId) {
@@ -573,7 +573,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseId The value of baseId as greaterEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setBaseId_GreaterEqual(Long baseId) {
@@ -582,7 +582,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseId The value of baseId as lessEqual. (basically NotNull: error as default, or no condition as option)
      */
     public void setBaseId_LessEqual(Long baseId) {
@@ -593,7 +593,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
      * RangeOf with various options. (versatile) <br>
      * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param minNumber The min number of baseId. (NullAllowed: if null, no from-condition)
      * @param maxNumber The max number of baseId. (NullAllowed: if null, no to-condition)
      * @param opLambda The callback for option of range-of. (NotNull)
@@ -606,7 +606,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
      * RangeOf with various options. (versatile) <br>
      * {(default) minNumber &lt;= column &lt;= maxNumber} <br>
      * And NullIgnored, OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param minNumber The min number of baseId. (NullAllowed: if null, no from-condition)
      * @param maxNumber The max number of baseId. (NullAllowed: if null, no to-condition)
      * @param rangeOfOption The option of range-of. (NotNull)
@@ -617,7 +617,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * InScope {in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseIdList The collection of baseId as inScope. (NullAllowed: if null (or empty), no condition)
      */
     public void setBaseId_InScope(Collection<Long> baseIdList) {
@@ -630,7 +630,7 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
 
     /**
      * NotInScope {not in (1, 2)}. And NullIgnored, NullElementIgnored, SeveralRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
+     * BASE_ID: {IX, NotNull, BIGINT(19), FK to BASE}
      * @param baseIdList The collection of baseId as notInScope. (NullAllowed: if null (or empty), no condition)
      */
     public void setBaseId_NotInScope(Collection<Long> baseIdList) {
@@ -640,18 +640,6 @@ public abstract class AbstractBsPizzaCQ extends AbstractConditionQuery {
     protected void doSetBaseId_NotInScope(Collection<Long> baseIdList) {
         regINS(CK_NINS, cTL(baseIdList), xgetCValueBaseId(), "BASE_ID");
     }
-
-    /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
-     */
-    public void setBaseId_IsNull() { regBaseId(CK_ISN, DOBJ); }
-
-    /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * BASE_ID: {IX, BIGINT(19), FK to BASE}
-     */
-    public void setBaseId_IsNotNull() { regBaseId(CK_ISNN, DOBJ); }
 
     protected void regBaseId(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueBaseId(), "BASE_ID"); }
     protected abstract ConditionValue xgetCValueBaseId();

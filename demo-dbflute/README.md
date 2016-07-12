@@ -35,7 +35,7 @@ demo-dbflute
  |  |-h2database
  |     |-pizzadb.mv.db // *created here
 ```
-5. sh manage.sh (at dbflute_pizzadb) and execute Regenerate to generate classes and documents
+5. sh manage.sh (at dbflute_pizzadb) and execute JDBC, Doc, Generate to generate classes and documents
 ```  
 demo-dbflute
  |-src/main/java

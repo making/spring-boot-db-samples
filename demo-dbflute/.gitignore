@@ -6,6 +6,7 @@
 /.idea
 /*.iml
 *.mv.db
+*.trace.db
 
 # Normally DBFlute Client 'dbflute_demodb' and DBFlute Engine 'mydbflute'
 # is not ignored to share the settings and engine with other developers.
