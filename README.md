@@ -11,6 +11,7 @@
 * [Sql2o](demo-sql2o)
 * Exposed
 * [S2JDBC](demo-s2jdbc)
+* [DBFlute](demo-dbflute)
 
 Pull Requests Welcome :)
 
