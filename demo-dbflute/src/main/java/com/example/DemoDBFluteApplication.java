@@ -10,9 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 
-import com.example.dbflute.allcommon.DBFluteBeansJavaConfig;
 import com.example.model.Base;
 import com.example.model.Pizza;
 import com.example.model.Topping;
@@ -20,7 +18,6 @@ import com.example.model.Topping;
 import bitronix.tm.BitronixTransactionSynchronizationRegistry;
 
 @SpringBootApplication
-@Import(DBFluteBeansJavaConfig.class) // #dbflute
 public class DemoDBFluteApplication {
 
     public static void main(String[] args) {

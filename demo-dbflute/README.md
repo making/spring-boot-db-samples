@@ -58,15 +58,9 @@ demo-dbflute
  |-...
 ```
 
-How to collaborate with DBFlute classes in Spring Framework
+How to show SQL logs as DEBUG
 
-1. import the auto-generated DBFluteBeansJavaConfig class at the application class
-```
-@SpringBootApplication
-@Import(DBFluteBeansJavaConfig.class) // *here
-public class DemoDBFluteApplication {
-```
-2. add a logging level setting for 'org.dbflute' to the application.properties to show SQL logs as DEBUG
+add a logging level setting for 'org.dbflute' to the application.properties
 ```
 logging.level.org.dbflute=DEBUG
 ```
