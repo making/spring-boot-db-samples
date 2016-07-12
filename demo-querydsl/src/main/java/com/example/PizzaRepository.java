@@ -1,6 +1,8 @@
 package com.example;
 
+import com.example.model.Base;
 import com.example.model.Pizza;
+import com.example.model.Topping;
 import com.example.querydsl.QBase;
 import com.example.querydsl.QPizza;
 import com.example.querydsl.QPizzaToppings;
@@ -8,10 +10,13 @@ import com.example.querydsl.QTopping;
 import com.querydsl.core.Tuple;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.dml.SQLInsertClause;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,28 +34,6 @@ public class PizzaRepository {
     private final QTopping qTopping = QTopping.topping;
 
     public List<Pizza> findOrderByIdAsc() {
-//        List<Result<Record>> values = dslContext.selectDistinct()
-//                .from(PIZZA)
-//                .innerJoin(BASE).on(BASE.ID.eq(PIZZA.BASE_ID))
-//                .innerJoin(PIZZA_TOPPINGS).on(PIZZA_TOPPINGS.PIZZA_ID.eq(PIZZA.ID))
-//                .innerJoin(TOPPING).on(TOPPING.ID.eq(PIZZA_TOPPINGS.TOPPINGS_ID))
-//                .orderBy(PIZZA.ID.asc())
-//                .fetch()
-//                .intoGroups(PIZZA.fields())
-//                .values()
-//                .stream()
-//                .collect(Collectors.toList());
-//        if (values.isEmpty()) {
-//            return Collections.emptyList();
-//        }
-//        return values.stream()
-//                .map(r -> {
-//                    Pizza pizza = r.into(PIZZA.ID, PIZZA.NAME, PIZZA.PRICE).get(0).into(Pizza.class);
-//                    pizza.setBase(r.into(BASE.ID, BASE.NAME).get(0).into(Base.class));
-//                    pizza.setToppings(r.sortAsc(TOPPING.ID).into(Topping.class));
-//                    return pizza;
-//                })
-//                .collect(Collectors.toList());
         List<Tuple> values = sqlQueryFactory
                 .select(qPizza.id, qPizza.name, qPizza.price, qBase.id, qBase.name, qTopping.id, qTopping.name)
                 .from(qPizza)
@@ -64,15 +47,27 @@ public class PizzaRepository {
         if (values.isEmpty()) {
             return Collections.emptyList();
         }
-        return values.stream()
-                .map(tuple -> {
-                    Pizza pizza = new Pizza();
-                    pizza.setId(tuple.get(qPizza.id));
-                    pizza.setName(tuple.get(qPizza.name));
-                    pizza.setPrice(tuple.get(qPizza.price));
-                    return pizza;
-                })
-                .collect(Collectors.toList());
+        List<Pizza> pizzas = new ArrayList<>();
+        Pizza pizza = null;
+        for (Tuple tuple : values) {
+            Long pizzaId = tuple.get(qPizza.id);
+            if (pizza == null || !pizza.getId().equals(pizzaId)) {
+                pizza = new Pizza();
+                pizza.setId(pizzaId);
+                pizza.setName(tuple.get(qPizza.name));
+                pizza.setPrice(tuple.get(qPizza.price));
+                Base base = new Base(tuple.get(qBase.id));
+                base.setId(tuple.get(qBase.id));
+                base.setName(tuple.get(qBase.name));
+                pizza.setBase(base);
+                pizza.setToppings(new ArrayList<>());
+                pizzas.add(pizza);
+            }
+            Topping topping = new Topping(tuple.get(qTopping.id));
+            topping.setName(tuple.get(qTopping.name));
+            pizza.getToppings().add(topping);
+        }
+        return pizzas;
     }
 
     public Pizza save(Pizza pizza) {
