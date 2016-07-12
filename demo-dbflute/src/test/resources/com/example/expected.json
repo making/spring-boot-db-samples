@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Hello Pizza",
+    "price": 1000.00,
+    "toppings": [
+      {
+        "id": 1,
+        "name": "Veggies"
+      },
+      {
+        "id": 2,
+        "name": "Roma Tomatoes"
+      },
+      {
+        "id": 3,
+        "name": "Red Onions"
+      },
+      {
+        "id": 4,
+        "name": "Spinach"
+      },
+      {
+        "id": 5,
+        "name": "Broccoli"
+      }
+    ],
+    "base": {
+      "id": 1,
+      "name": "Thin Crust"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Spring Pizza",
+    "price": 1200.00,
+    "toppings": [
+      {
+        "id": 3,
+        "name": "Red Onions"
+      },
+      {
+        "id": 10,
+        "name": "Meats"
+      }
+    ],
+    "base": {
+      "id": 2,
+      "name": "Flatbread Crust"
+    }
+  }
+]

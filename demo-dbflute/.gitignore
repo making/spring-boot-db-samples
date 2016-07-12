@@ -1,0 +1,15 @@
+/target
+/bin
+/.settings
+/.classpath
+/.project
+/.idea
+/*.iml
+*.mv.db
+
+# Normally DBFlute Client 'dbflute_demodb' and DBFlute Engine 'mydbflute'
+# is not ignored to share the settings and engine with other developers.
+# But this is a code example so ignore them.
+/dbflute_pizzadb
+/mydbflute
+/dbflute-intro.jar
