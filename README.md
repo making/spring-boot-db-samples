@@ -12,6 +12,7 @@
 * Exposed
 * [S2JDBC](demo-s2jdbc)
 * [DBFlute](demo-dbflute)
+* [Iciql](demo-iciql)
 
 Pull Requests Welcome :)
 
