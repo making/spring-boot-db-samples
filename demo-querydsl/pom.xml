@@ -72,7 +72,7 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>create-db</id>
+						<id>create-db-for-code-generation</id>
 						<phase>process-resources</phase>
 						<goals>
 							<goal>execute</goal>
@@ -86,14 +86,12 @@
 								<basedir>${basedir}/src/main/resources/</basedir>
 								<includes>
 									<include>schema.sql</include>
-									<include>data.sql</include>
 								</includes>
 							</fileset>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>com.querydsl</groupId>
 				<artifactId>querydsl-maven-plugin</artifactId>
@@ -117,7 +115,8 @@
 					</beanInterfaces>
 					<beanAddToString>true</beanAddToString>
 					<exportBeans>true</exportBeans>
-					<targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
+					<!--<targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>-->
+					<targetFolder>${project.basedir}/src/generated/java</targetFolder>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -126,6 +125,23 @@
 						<version>1.4.192</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/generated/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
