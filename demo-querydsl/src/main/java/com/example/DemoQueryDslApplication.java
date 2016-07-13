@@ -6,17 +6,15 @@ import com.example.model.Topping;
 import com.querydsl.sql.H2Templates;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.SQLTemplates;
-import com.querydsl.sql.spring.SpringConnectionProvider;
 import com.querydsl.sql.spring.SpringExceptionTranslator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
-import javax.inject.Provider;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
-import java.sql.Connection;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -48,7 +46,6 @@ public class DemoQueryDslApplication {
 
     @Bean
     SQLQueryFactory sqlQueryFactory(DataSource dataSource) {
-        Provider<Connection> provider = new SpringConnectionProvider(dataSource);
-        return new SQLQueryFactory(querydslConfiguration(), provider);
+        return new SQLQueryFactory(querydslConfiguration(), new TransactionAwareDataSourceProxy(dataSource));
     }
 }

@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-@Transactional
 public class PizzaRepository {
 
     private final SQLQueryFactory sqlQueryFactory;
@@ -71,6 +70,7 @@ public class PizzaRepository {
         return pizzas;
     }
 
+    @Transactional
     public Pizza save(Pizza pizza) {
 
         Long pizzaId = sqlQueryFactory.insert(qPizza)
