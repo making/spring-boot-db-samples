@@ -16,5 +16,5 @@ After start and stop the application
 
 ``` console
 rm -rf src/generated
-mvn clean generate-sources -Pgenerate
+mvn clean compile
 ```

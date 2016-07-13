@@ -15,5 +15,6 @@ curl -d '{"name" : "Spring Pizza", "price" : 1200, "toppings" : [{"id" : 3}, {"i
 After start and stop the application
 
 ``` console
-mvn clean compile
+rm -rf src/generated
+mvn clean generate-sources -Pgenerate
 ```
