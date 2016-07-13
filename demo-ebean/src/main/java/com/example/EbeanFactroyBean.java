@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.EbeanServerFactory;
-import com.avaje.ebean.config.CurrentUserProvider;
 import com.avaje.ebean.config.ServerConfig;
 
 @Component
@@ -28,12 +27,6 @@ public class EbeanFactroyBean implements FactoryBean<EbeanServer>, EnvironmentAw
 
         ServerConfig config = new ServerConfig();
         config.setName("db");
-//        config.setCurrentUserProvider(new CurrentUserProvider() {
-//            @Override
-//            public Object currentUser() {
-//                return "test";
-//            }
-//        });
         config.loadFromProperties(properties);
         config.loadTestProperties();
         config.setDefaultServer(true);
