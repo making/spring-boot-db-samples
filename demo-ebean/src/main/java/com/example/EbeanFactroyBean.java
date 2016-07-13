@@ -23,7 +23,7 @@ public class EbeanFactroyBean implements FactoryBean<EbeanServer> {
     public EbeanServer getObject() throws Exception {
 
         ServerConfig config = new ServerConfig();
-        config.setName("db");
+        config.setName("default");
         config.setDataSource(dataSource);
         config.setDefaultServer(true);
         config.setRegister(true);

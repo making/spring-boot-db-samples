@@ -34,20 +34,20 @@
 		</dependency>
 
 		<dependency>
-				<groupId>org.avaje.ebeanorm</groupId>
-				<artifactId>avaje-ebeanorm</artifactId>
-				<version>7.18.1</version>
+			<groupId>org.avaje.ebeanorm</groupId>
+			<artifactId>avaje-ebeanorm</artifactId>
+			<version>7.18.1</version>
 		</dependency>
 		<dependency>
-				<groupId>org.avaje.ebeanorm</groupId>
-				<artifactId>querybean-generator</artifactId>
-				<version>2.3.1</version>
-				<scope>provided</scope>
+			<groupId>org.avaje.ebeanorm</groupId>
+			<artifactId>querybean-generator</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-				<groupId>org.avaje.ebeanorm</groupId>
-				<artifactId>avaje-ebeanorm-querybean</artifactId>
-				<version>7.15.1</version>
+			<groupId>org.avaje.ebeanorm</groupId>
+			<artifactId>avaje-ebeanorm-querybean</artifactId>
+			<version>7.15.1</version>
 		</dependency>
     
 		<dependency>
@@ -62,11 +62,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-				<groupId>org.avaje.composite</groupId>
-				<artifactId>avaje-composite-testing-ebean</artifactId>
-				<version>4.1</version>
-				<type>pom</type>
-				<scope>test</scope>
+			<groupId>org.avaje.composite</groupId>
+			<artifactId>avaje-composite-testing-ebean</artifactId>
+			<version>4.1</version>
+			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	
@@ -96,7 +96,6 @@
 				</executions>
 			</plugin>
 
-
 			<plugin>
 				<groupId>org.avaje.ebeanorm</groupId>
 				<artifactId>querybean-maven-plugin</artifactId>
@@ -125,8 +124,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			
 		</plugins>
 	</build>
 	

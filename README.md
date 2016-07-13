@@ -13,6 +13,7 @@
 * [S2JDBC](demo-s2jdbc)
 * [DBFlute](demo-dbflute)
 * [Iciql](demo-iciql)
+* [Ebean](demo-ebean)
 
 Pull Requests Welcome :)
 
