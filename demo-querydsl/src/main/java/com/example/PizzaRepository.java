@@ -10,7 +10,6 @@ import com.example.querydsl.QTopping;
 import com.querydsl.core.Tuple;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.dml.SQLInsertClause;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,13 +21,16 @@ import java.util.stream.Collectors;
 @Transactional
 public class PizzaRepository {
 
-    @Autowired
-    private SQLQueryFactory sqlQueryFactory;
+    private final SQLQueryFactory sqlQueryFactory;
 
     private final QPizza qPizza = QPizza.pizza;
     private final QPizzaToppings qPizzaToppings = QPizzaToppings.pizzaToppings;
     private final QBase qBase = QBase.base;
     private final QTopping qTopping = QTopping.topping;
+
+    public PizzaRepository(SQLQueryFactory sqlQueryFactory) {
+        this.sqlQueryFactory = sqlQueryFactory;
+    }
 
     public List<Pizza> findOrderByIdAsc() {
         List<Tuple> values = sqlQueryFactory

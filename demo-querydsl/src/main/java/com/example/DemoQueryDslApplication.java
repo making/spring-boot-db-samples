@@ -39,7 +39,7 @@ public class DemoQueryDslApplication {
     }
 
     @Bean
-    public com.querydsl.sql.Configuration querydslConfiguration() {
+    com.querydsl.sql.Configuration querydslConfiguration() {
         SQLTemplates templates = H2Templates.builder().build();
         com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration(templates);
         configuration.setExceptionTranslator(new SpringExceptionTranslator());
@@ -47,7 +47,7 @@ public class DemoQueryDslApplication {
     }
 
     @Bean
-    public SQLQueryFactory sqlQueryFactory(DataSource dataSource) {
+    SQLQueryFactory sqlQueryFactory(DataSource dataSource) {
         Provider<Connection> provider = new SpringConnectionProvider(dataSource);
         return new SQLQueryFactory(querydslConfiguration(), provider);
     }
