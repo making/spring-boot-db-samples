@@ -16,7 +16,7 @@ public class PizzaRepository {
     EbeanServer server;
     
     public List<Pizza> findOrderByIdAsc() {
-        List<Pizza> pizzas = server.find(Pizza.class).orderBy("ID ASC").findList();
+        List<Pizza> pizzas = server.find(Pizza.class).orderBy("id asc").findList();
         return pizzas;
     }
     
