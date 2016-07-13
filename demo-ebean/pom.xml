@@ -34,6 +34,23 @@
 		</dependency>
 
 		<dependency>
+				<groupId>org.avaje.ebeanorm</groupId>
+				<artifactId>avaje-ebeanorm</artifactId>
+				<version>7.18.1</version>
+		</dependency>
+		<dependency>
+				<groupId>org.avaje.ebeanorm</groupId>
+				<artifactId>querybean-generator</artifactId>
+				<version>2.3.1</version>
+				<scope>provided</scope>
+		</dependency>
+		<dependency>
+				<groupId>org.avaje.ebeanorm</groupId>
+				<artifactId>avaje-ebeanorm-querybean</artifactId>
+				<version>7.15.1</version>
+		</dependency>
+    
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -43,6 +60,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+				<groupId>org.avaje.composite</groupId>
+				<artifactId>avaje-composite-testing-ebean</artifactId>
+				<version>4.1</version>
+				<type>pom</type>
+				<scope>test</scope>
 		</dependency>
 	</dependencies>
 	
