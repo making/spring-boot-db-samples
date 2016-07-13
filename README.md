@@ -7,12 +7,13 @@
 * [jOOQ](demo-jooq)
 * [MyBatis](demo-mybatis)
 * [Doma2](demo-doma2)
+* [Querydsl](demo-querydsl)
 * [JDBI](demo-jdbi)
 * [Sql2o](demo-sql2o)
+* [Iciql](demo-iciql)
 * Exposed
 * [S2JDBC](demo-s2jdbc)
 * [DBFlute](demo-dbflute)
-* [Iciql](demo-iciql)
 * [Ebean](demo-ebean)
 
 Pull Requests Welcome :)
