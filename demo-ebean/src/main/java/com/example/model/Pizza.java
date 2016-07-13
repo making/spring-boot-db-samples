@@ -13,6 +13,9 @@ public class Pizza implements Serializable {
     private String name;
     private BigDecimal price;
     @ManyToMany
+    @JoinTable(name="pizza_toppings",
+        joinColumns=@JoinColumn(name="pizza_id"),
+        inverseJoinColumns=@JoinColumn(name="toppings_id"))
     private List<Topping> toppings;
     @ManyToOne
     private Base base;
