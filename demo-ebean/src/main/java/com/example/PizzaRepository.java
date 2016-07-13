@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.avaje.ebean.EbeanServer;
-import com.avaje.ebean.TxRunnable;
 import com.example.model.Pizza;
 
 @Repository
@@ -21,12 +20,7 @@ public class PizzaRepository {
     }
     
     public Pizza save(Pizza pizza) {
-        server.execute(new TxRunnable() {
-            @Override
-            public void run() {
-                server.save(pizza);
-            }
-        });
+        server.save(pizza);
         return pizza;
     }
 }
