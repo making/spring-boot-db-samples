@@ -7,7 +7,7 @@
 * [jOOQ](demo-jooq)
 * [MyBatis](demo-mybatis)
 * [Doma2](demo-doma2)
-* [Querydsl](demo-iciql)
+* [Querydsl](demo-querydsl)
 * [JDBI](demo-jdbi)
 * [Sql2o](demo-sql2o)
 * [Iciql](demo-iciql)
