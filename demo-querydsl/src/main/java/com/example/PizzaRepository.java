@@ -10,13 +10,10 @@ import com.example.querydsl.QTopping;
 import com.querydsl.core.Tuple;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.dml.SQLInsertClause;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,26 +44,28 @@ public class PizzaRepository {
         if (values.isEmpty()) {
             return Collections.emptyList();
         }
-        List<Pizza> pizzas = new ArrayList<>();
-        Pizza pizza = null;
-        for (Tuple tuple : values) {
-            Long pizzaId = tuple.get(qPizza.id);
-            if (pizza == null || !pizza.getId().equals(pizzaId)) {
-                pizza = new Pizza();
-                pizza.setId(pizzaId);
-                pizza.setName(tuple.get(qPizza.name));
-                pizza.setPrice(tuple.get(qPizza.price));
-                Base base = new Base(tuple.get(qBase.id));
-                base.setId(tuple.get(qBase.id));
-                base.setName(tuple.get(qBase.name));
-                pizza.setBase(base);
-                pizza.setToppings(new ArrayList<>());
-                pizzas.add(pizza);
-            }
-            Topping topping = new Topping(tuple.get(qTopping.id));
-            topping.setName(tuple.get(qTopping.name));
-            pizza.getToppings().add(topping);
-        }
+
+        List<Pizza> pizzas = values.stream()
+                .collect(Collectors.groupingBy(tuple -> tuple.get(qPizza.id)))
+                .entrySet()
+                .stream()
+                .map(e -> {
+                    Tuple tuple = e.getValue().get(0);
+                    com.example.model.Pizza pizza = new Pizza();
+                    pizza.setId(tuple.get(qPizza.id));
+                    pizza.setName(tuple.get(qPizza.name));
+                    pizza.setPrice(tuple.get(qPizza.price));
+                    com.example.model.Base base = new Base(tuple.get(qBase.id));
+                    base.setId(tuple.get(qBase.id));
+                    base.setName(tuple.get(qBase.name));
+                    pizza.setBase(base);
+                    pizza.setToppings(e.getValue().stream().map(subTuple -> {
+                        com.example.model.Topping topping = new Topping(subTuple.get(qTopping.id));
+                        topping.setName(subTuple.get(qTopping.name));
+                        return topping;
+                    }).collect(Collectors.toList()));
+                    return pizza;
+                }).collect(Collectors.toList());
         return pizzas;
     }
 

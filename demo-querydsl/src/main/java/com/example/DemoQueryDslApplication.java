@@ -8,14 +8,10 @@ import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.SQLTemplates;
 import com.querydsl.sql.spring.SpringConnectionProvider;
 import com.querydsl.sql.spring.SpringExceptionTranslator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.inject.Provider;
 import javax.sql.DataSource;
@@ -25,8 +21,6 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class DemoQueryDslApplication {
-
-    private static Logger log = LoggerFactory.getLogger(DemoQueryDslApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(DemoQueryDslApplication.class, args);
@@ -42,12 +36,6 @@ public class DemoQueryDslApplication {
             pizza.setPrice(new BigDecimal("1000"));
             pizzaRepository.save(pizza);
         };
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager(DataSource dataSource) {
-        log.info("dataSource = {}", dataSource.toString());
-        return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean
