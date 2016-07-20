@@ -49,7 +49,12 @@
 			<artifactId>avaje-ebeanorm-querybean</artifactId>
 			<version>7.15.1</version>
 		</dependency>
-    
+		<dependency>
+				<groupId>org.avaje.ebeanorm</groupId>
+				<artifactId>avaje-ebeanorm-spring</artifactId>
+				<version>7.1.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

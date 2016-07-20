@@ -3,21 +3,19 @@ package com.example;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.EbeanServerFactory;
 import com.avaje.ebean.config.ServerConfig;
+import com.avaje.ebean.springsupport.txn.SpringAwareJdbcTransactionManager;
 
 @Component
 public class EbeanFactroyBean implements FactoryBean<EbeanServer> {
 
-    private final DataSource dataSource;
-    
-    public EbeanFactroyBean(DataSource dataSource) {
-        this.dataSource = new TransactionAwareDataSourceProxy(dataSource);
-    }
+    @Autowired
+    DataSource dataSource;
 
     @Override
     public EbeanServer getObject() throws Exception {
@@ -25,6 +23,7 @@ public class EbeanFactroyBean implements FactoryBean<EbeanServer> {
         ServerConfig config = new ServerConfig();
         config.setName("default");
         config.setDataSource(dataSource);
+        config.setExternalTransactionManager(new SpringAwareJdbcTransactionManager());
         config.setDefaultServer(true);
         config.setRegister(true);
 
