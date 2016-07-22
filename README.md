@@ -14,6 +14,7 @@
 * Exposed
 * [S2JDBC](demo-s2jdbc)
 * [DBFlute](demo-dbflute)
+* [Ebean](demo-ebean)
 
 Pull Requests Welcome :)
 
