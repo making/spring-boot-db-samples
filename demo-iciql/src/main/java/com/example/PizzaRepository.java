@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +25,7 @@ public class PizzaRepository {
     private final DataSource dataSource;
 
     public PizzaRepository(DataSource dataSource) {
-        this.dataSource = dataSource;
+        this.dataSource = new TransactionAwareDataSourceProxy(dataSource);
     }
 
     public List<Pizza> findOrderByIdAsc() {
